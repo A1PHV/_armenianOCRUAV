@@ -1,0 +1,19 @@
+[Unit]
+Description=Drone CV System for SKAT Competition 2025
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=khadas
+Group=khadas
+WorkingDirectory=/home/khadas/drone-cv
+Environment=PATH=/home/khadas/drone-cv-env/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/khadas/drone-cv-env/bin/python main_controller.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
